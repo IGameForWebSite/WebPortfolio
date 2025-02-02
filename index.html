@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortfolioLattaphon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- เพิ่ม Layer พื้นหลัง -->
+        <div id="bg-layer" class="bg-layer initial"></div>
+        <!-- หัวข้อ -->
+        <header>
+            <h1 class="neon-title">Portfolio of<br><span class="name">Game Developer</span><span class="subname"></span></h1>
+        </header>
+
+        <!-- หน้าต่างเนื้อหา -->
+        <div id="page-content" class="page-content">
+            <!-- เนื้อหาจะถูกโหลดโดย JavaScript -->
+        </div>
+        <!-- ลูกศรเปลี่ยนหน้า -->
+        <div class="navigation">
+            <button id="prev-btn" class="nav-arrow hidden">◀</button>
+            <button id="next-btn" class="nav-arrow">▶</button>
+        </div>
+
+        <!-- ตัวละครวงรี -->
+        <div class="character-container">
+            <img id="character" src="assets/Animation/idle.png" alt="Character" class="character">
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* ให้เนื้อหาไม่ล้นจอมือถือ */
+            max-width: 100%;
+        }
+
+
+        .image-container {
+            width: 50%; /* ปรับขนาดให้เล็กลง */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .content {
+            width: 50%; /* ให้เนื้อหากว้างเท่ากับรูป */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
+        }
+
+
+        .tags {
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            background-color: #b33b5e;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        ul li {
+            font-weight: bold;
+        }
+
+        .download {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="/assets/img/itMe.png" alt="Game Image">
+        </div>
+        <div class="content">
+            <h2 style="font-size: 36px;">AboutMe</h2>
+            <h2>Lattaphon (2001)</h2>
+            <div class="tags">
+                <p></p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                สวัสดีครับ ผมชื่อ เกมส์
+                ผมเป็นนักพัฒนาเกมที่มีความหลงใหลใน Game Mechanics & System Design สามารถใช้ Godot, Unity และ C# ได้และมีประสบการณ์ทำเกมทั้งแบบ Singleplayer & Multiplayer รวมถึงการออกแบบ AI, UI และ Gameplay Loop
+            </div>
+            <ul>
+                <li>🔹 โปรแกรม: Godot, Unity, C#, GDScript</li>
+                <li>🎯 สนใจ: Roguelike, Puzzle Mechanics, AI Behavior, Shooter</li>
+                <li>🌱 กำลังเรียนรู้: Cybersecurity และ Web Development</li>
+            </ul>
+            <br></br>
+            <a href="https://github.com/LKDevG?tab=repositories" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; font-size: 18px; font-weight: bold;">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="40" alt="GitHub">
+                Click to GitHub
+            </a>
+                    
+        </div>
+    </div>
+
+</body>
+</html>

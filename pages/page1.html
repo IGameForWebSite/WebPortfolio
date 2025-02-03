@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
+        /* เพิ่ม CSS สำหรับส่วนติดต่อ */
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: whitesmoke;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .contact-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
         .container {
             display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
             align-items: center;
@@ -92,10 +121,31 @@
                 <li>🌱 กำลังเรียนรู้: Cybersecurity และ Web Development</li>
             </ul>
             <br></br>
-            <a href="https://github.com/LKDevG?tab=repositories" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; font-size: 18px; font-weight: bold;">
-                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="40" alt="GitHub">
-                Click to GitHub
-            </a>
+            <div class="contact-links">
+                <!-- GitHub -->
+                <a href="https://github.com/LKDevG?tab=repositories" target="_blank" class="contact-item">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
+            
+                <!-- itch.io -->
+                <a href="https://lattaphon.itch.io/" target="_blank" class="contact-item">
+                    <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch.io">
+                    <span>itch.io</span>
+                </a>
+            
+                <!-- Email -->
+                <a href="mailto:lattaphon_k@outlook.co.th" class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+                    <span>Email</span>
+                </a>
+            
+                <!-- Phone -->
+                <a href="tel:+66632465051" class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/126/126341.png" alt="Phone">
+                    <span>063-2465051</span>
+                </a>
+            </div>
                     
         </div>
     </div>

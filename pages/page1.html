@@ -31,6 +31,7 @@
             width: 30px;
             height: 30px;
             object-fit: contain;
+            filter: invert(1);
         }
 
         .container {
@@ -151,4 +152,25 @@
     </div>
 
 </body>
+
+<script>
+// ตัวอย่างการตั้งค่าเฉพาะหน้า
+function setupPageSettings() {
+    // เปลี่ยนเนื้อหาของ Modal สำหรับหน้านี้
+    const modalContent = `
+        <h3>Game Settings</h3>
+        <label>
+            <input type="checkbox" id="sound"> Sound Effects
+        </label>
+        <button onclick="saveSettings()">Save</button>
+    `;
+    
+    document.querySelector('.settings-modal').innerHTML = modalContent;
+}
+
+// เรียกใช้เมื่อโหลดหน้า
+window.onload = setupPageSettings;
+</script>
+
+
 </html>

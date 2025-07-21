@@ -3,7 +3,7 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageContent = document.getElementById('page-content');
 const pages = ['pages/page1.html', 'pages/page2.html', 'pages/page3.html','pages/page4.html','pages/page5.html'];
-let currentPageIndex = 2;
+let currentPageIndex = 1;
 
 // รูปภาพสำหรับอนิเมชั่น
 const leftImages = ['assets/Animation/left1.png', 'assets/Animation/left2.png', 'assets/Animation/left3.png', 'assets/Animation/left4.png', 'assets/Animation/left5.png'];

@@ -289,6 +289,46 @@ body {
         padding: 4px 8px;
         font-size: 13px;
     }
+
+    /* Inner page layout — loaded here so it applies before page HTML injects */
+    #page-content .container {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    #page-content .image-container,
+    #page-content .content {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Show text before images on mobile */
+    #page-content .content {
+        order: -1;
+    }
+
+    /* Constrain images & GIFs so they don't push text off screen */
+    #page-content .image-container img {
+        max-height: 140px !important;
+        width: auto !important;
+        max-width: 100% !important;
+        object-fit: contain;
+        display: block;
+        margin: 4px auto;
+    }
+
+    #page-content h2 { font-size: 16px !important; }
+    #page-content p, #page-content ul { font-size: 12px !important; }
+    #page-content .tagred,
+    #page-content .tagblue,
+    #page-content .taggray,
+    #page-content .tagsteam { font-size: 13px !important; }
+    #page-content .contact-item { font-size: 13px !important; }
+    #page-content .contact-item img {
+        width: 22px !important;
+        height: 22px !important;
+    }
 }
 
 /* Small mobile */
@@ -317,5 +357,9 @@ body {
 
     .nav-arrow {
         font-size: 1.6rem;
+    }
+
+    #page-content .image-container img {
+        max-height: 110px !important;
     }
 }

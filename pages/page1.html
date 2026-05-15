@@ -99,6 +99,24 @@
             font-style: italic;
             color: #666;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-container, .content {
+                width: 100%;
+                max-width: 100%;
+            }
+            .image-container img {
+                max-height: 200px;
+                object-fit: contain;
+            }
+            h2 { font-size: 18px; }
+            p, ul { font-size: 12px; }
+            .contact-item { font-size: 13px; }
+            .contact-item img { width: 22px; height: 22px; }
+        }
     </style>
 </head>
 <body>

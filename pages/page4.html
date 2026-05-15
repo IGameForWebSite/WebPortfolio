@@ -85,6 +85,23 @@
             font-style: italic;
             color: #666;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-container, .content {
+                width: 100%;
+                max-width: 100%;
+            }
+            .image-container img {
+                max-height: 180px;
+                object-fit: contain;
+            }
+            h2 { font-size: 16px; }
+            p, ul { font-size: 12px; }
+            .tagred, .tagblue { font-size: 13px; }
+        }
     </style>
 </head>
 <body>

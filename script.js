@@ -130,3 +130,26 @@ function updatePageIndicator() {
         }
     });
 }
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    // Only handle horizontal swipes longer than 50px and more horizontal than vertical
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        if (dx < 0 && currentPageIndex < pages.length - 1) {
+            handleNavigation('next');
+        } else if (dx > 0 && currentPageIndex > 0) {
+            handleNavigation('prev');
+        }
+    }
+}, { passive: true });

@@ -2,49 +2,44 @@ const character = document.getElementById('character');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageContent = document.getElementById('page-content');
-const pages = ['pages/page1.html', 'pages/page2.html', 'pages/page3.html','pages/page4.html','pages/page5.html'];
-let currentPageIndex = 1;
+const pages = ['pages/page1.html', 'pages/page2.html', 'pages/page3.html', 'pages/page4.html', 'pages/page5.html'];
+let currentPageIndex = 0;
+let isNavigating = false;
 
-// รูปภาพสำหรับอนิเมชั่น
-const leftImages = ['assets/Animation/left1.png', 'assets/Animation/left2.png', 'assets/Animation/left3.png', 'assets/Animation/left4.png', 'assets/Animation/left5.png'];
+const leftImages = ['assets/Animation/left1.png', 'assets/Animation/left2.png', 'assets/Animation/left3.png', 'assets/Animation/left4.png'];
 const rightImages = ['assets/Animation/right1.png', 'assets/Animation/right2.png', 'assets/Animation/right3.png', 'assets/Animation/right4.png'];
 
 const bgLayer = document.getElementById('bg-layer');
+let bgPosition = 0;
 
-// ตำแหน่งเริ่มต้นของพื้นหลัง
-let bgPosition = 0; // เริ่มที่ 0
-
-// โหลดหน้าแรก
 loadPage(pages[currentPageIndex]);
 updateNavigationButtons();
-// ตั้งค่าตำแหน่งพื้นหลังเริ่มต้น
+updatePageIndicator();
 bgLayer.style.transform = `translateX(${bgPosition}%)`;
 
-// ฟังก์ชันโหลดหน้า + ซ่อน/แสดง
 function loadPage(page) {
-    // ซ่อนหน้าปัจจุบัน
     pageContent.classList.add('hidden');
     updatePageIndicator();
 
     fetch(page)
         .then(response => response.text())
         .then(data => {
-            // แสดงหน้าถัดไปหลังอนิเมชั่น
             setTimeout(() => {
                 pageContent.innerHTML = data;
+                pageContent.scrollTop = 0;
                 pageContent.classList.remove('hidden');
-            }, 500); // ตรงกับเวลาอนิเมชั่น
+                pageContent.classList.add('fade-in');
+                setTimeout(() => pageContent.classList.remove('fade-in'), 1000);
+            }, 400);
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error loading page:', error));
 }
 
-// ฟังก์ชันอัปเดตลูกศร
 function updateNavigationButtons() {
     prevBtn.classList.toggle('hidden', currentPageIndex === 0);
     nextBtn.classList.toggle('hidden', currentPageIndex === pages.length - 1);
 }
 
-// ฟังก์ชันเล่นอนิเมชั่นด้วยรูปภาพ
 function playAnimation(images, callback) {
     let index = 0;
     const interval = setInterval(() => {
@@ -54,63 +49,61 @@ function playAnimation(images, callback) {
             clearInterval(interval);
             callback();
         }
-    }, 100); // เปลี่ยนรูปทุก 100ms
+    }, 100);
 }
 
-// ฟังก์ชันเลื่อนพื้นหลัง (แบบไม่จำกัด)
 function moveBackground(direction) {
-    // กำหนดระยะการเลื่อนต่อครั้ง
-    const moveDistance = 25; // เลื่อน 25% ต่อครั้ง
-    
+    const moveDistance = 25;
     if (direction === 'next') {
-        bgPosition -= moveDistance; // เลื่อนไปทางซ้าย
+        bgPosition -= moveDistance;
     } else if (direction === 'prev') {
-        bgPosition += moveDistance; // เลื่อนกลับทางขวา
+        bgPosition += moveDistance;
     }
-    
     bgLayer.style.transform = `translateX(${bgPosition}%)`;
 }
 
-// แก้ไขฟังก์ชัน handleNavigation
 function handleNavigation(direction) {
-    // ซ่อนลูกศรชั่วคราว
+    if (isNavigating) return;
+    if (direction === 'prev' && currentPageIndex === 0) return;
+    if (direction === 'next' && currentPageIndex === pages.length - 1) return;
+
+    isNavigating = true;
     prevBtn.style.pointerEvents = 'none';
     nextBtn.style.pointerEvents = 'none';
 
-    // เลื่อนพื้นหลังก่อน
     moveBackground(direction);
 
-    // เล่นอนิเมชั่นตัวละคร
     if (direction === 'prev') {
         playAnimation(leftImages, () => {
             character.src = 'assets/Animation/idle.png';
-            if (currentPageIndex > 0) {
-                currentPageIndex--;
-                loadPage(pages[currentPageIndex]);
-                updateNavigationButtons();
-            }
+            currentPageIndex--;
+            loadPage(pages[currentPageIndex]);
+            updateNavigationButtons();
+            isNavigating = false;
             prevBtn.style.pointerEvents = 'auto';
             nextBtn.style.pointerEvents = 'auto';
         });
     } else {
         playAnimation(rightImages, () => {
             character.src = 'assets/Animation/idle.png';
-            if (currentPageIndex < pages.length - 1) {
-                currentPageIndex++;
-                loadPage(pages[currentPageIndex]);
-                updateNavigationButtons();
-            }
+            currentPageIndex++;
+            loadPage(pages[currentPageIndex]);
+            updateNavigationButtons();
+            isNavigating = false;
             prevBtn.style.pointerEvents = 'auto';
             nextBtn.style.pointerEvents = 'auto';
         });
     }
 }
 
-// Event Listeners
-prevBtn.addEventListener('click', () => handleNavigation('prev'));
-nextBtn.addEventListener('click', () => handleNavigation('next'));
+function updatePageIndicator() {
+    const indicators = document.querySelectorAll('.page-number');
+    indicators.forEach((el, index) => {
+        el.classList.toggle('active', index === currentPageIndex);
+    });
+}
 
-// เพิ่ม Keyboard navigation
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentPageIndex > 0) {
         handleNavigation('prev');
@@ -119,15 +112,34 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Touch / Swipe navigation
+let touchStartX = 0;
+let touchStartY = 0;
 
-function updatePageIndicator() {
-    const indicators = document.querySelectorAll('.page-number');
-    indicators.forEach((el, index) => {
-        if (index === currentPageIndex) {
-            el.classList.add('active');
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    // Only trigger on clear horizontal swipe (not vertical scroll)
+    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
+        if (dx < 0) {
+            handleNavigation('next');
         } else {
-            el.classList.remove('active');
+            handleNavigation('prev');
         }
+<<<<<<< HEAD
+    }
+}, { passive: true });
+
+// Button events
+prevBtn.addEventListener('click', () => handleNavigation('prev'));
+nextBtn.addEventListener('click', () => handleNavigation('next'));
+=======
     });
 }
 
@@ -153,3 +165,4 @@ document.addEventListener('touchend', (e) => {
         }
     }
 }, { passive: true });
+>>>>>>> 5da68a1ab351107123123647fea545f688d7bca3

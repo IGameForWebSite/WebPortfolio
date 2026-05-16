@@ -2,113 +2,110 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .container {
-            display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap; /* ให้เนื้อหาไม่ล้นจอมือถือ */
+        .page-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
             max-width: 100%;
         }
 
-
         .image-container {
-            width: 50%; /* ปรับขนาดให้เล็กลง */
-            max-width: 500px; /* กำหนดขนาดสูงสุด */
+            flex: 0 0 44%;
+            max-width: 320px;
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             object-fit: contain;
+            border-radius: 6px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #111;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            transition: background 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #333;
         }
 
         .content {
-            width: 50%; /* ให้เนื้อหากว้างเท่ากับรูป */
-            max-width: 500px; /* กำหนดขนาดสูงสุด */
+            flex: 1 1 200px;
         }
-
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .tagred {
             background-color: #b33b5e;
             color: white;
-            padding: 5px 5px;
+            padding: 4px 8px;
             border-radius: 5px;
-            font-size: 20px;
+            font-size: 12px;
             font-weight: bold;
-            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
-            max-width: 300px; /* สามารถปรับขนาดเองได้ */
-            text-align: center;
-        }
-
-        .tagblue {
-            background-color: #3b91b3;
-            color: white;
-            padding: 5px 5px;
-            border-radius: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
-            max-width: 300px; /* สามารถปรับขนาดเองได้ */
-            text-align: center;
-        }
-
-        .taggray {
-            background-color: #7f8c8d;
-            color: white;
-            padding: 5px 5px;
-            border-radius: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            display: inline-block;
-            max-width: 300px;
-            text-align: center;
         }
 
         .tagsteam {
-            background-color: #171a21;  /* Steam Dark Blue */
-            color: #c7d5e0;  /* Steam Text Color */
-            padding: 5px 10px;
+            background-color: #4a3f7a;
+            color: #fff;
+            padding: 4px 8px;
             border-radius: 5px;
-            font-size: 20px;
+            font-size: 12px;
             font-weight: bold;
-            display: inline-block;
-            max-width: 300px;
-            text-align: center;
-            border: 1px solid #2a475e;  /* Steam Border */
         }
 
         h2 {
-            margin: 0;
-            font-size: 22px;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #7cfc00;
+            line-height: 1.5;
         }
 
         p {
-            font-size: 14px;
-            color: #ffffff;
-            line-height: 1.6;
+            font-size: 12px;
+            color: #ddd;
+            line-height: 1.8;
+            margin: 8px 0;
         }
 
-        ul {
-            padding-left: 20px;
-            font-size: 14px;
-        }
-
-        ul li {
-            font-weight: bold;
-        }
-
-        .download {
-            margin-top: 10px;
-            font-style: italic;
-            color: #666;
+        @media (max-width: 600px) {
+            .page-container {
+                flex-direction: column;
+            }
+            .image-container {
+                flex: none;
+                width: 100%;
+                max-width: 100%;
+            }
+            .image-container img {
+                max-height: 180px;
+                object-fit: cover;
+            }
+            .content {
+                width: 100%;
+            }
+            h2 {
+                font-size: 13px;
+            }
+            p {
+                font-size: 11px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -131,49 +128,33 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="page-container">
         <div class="image-container">
-            <a href="https://lattaphon.itch.io/fix-itgamejam" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: black; color: white; text-decoration: none; border-radius: 5px;">
-                View 🚀
+            <a href="https://lattaphon.itch.io/fix-itgamejam" target="_blank" class="view-btn">
+                View on itch.io 🚀
             </a>
-            <img src="assets/img/GameJam1.png" alt="Game Image">
-        <br></br>
-            <img src="assets/gif/GIF_GameJam.gif" alt="Game Image">
+            <img src="assets/img/GameJam1.png" alt="Clean it">
+            <img src="assets/gif/GIF_GameJam.gif" alt="Gameplay">
         </div>
         <div class="content">
             <h2>Clean it (2025) #Godot</h2>
             <div class="tags">
                 <div class="tagsteam">GameJam</div>
-                <div class="tagred">Game Developers</div>
+                <div class="tagred">Game Developer</div>
             </div>
             <p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                โปรเจคเกม 2D ที่แข่งขันใน Brackeys Game Jam 2025.1 หัวข้อคือ
+                โปรเจคเกม 2D ที่แข่งขันใน Brackeys Game Jam 2025.1
+                หัวข้อ "Nothing can go wrong..." มี 2,181 เกมที่ลงแข่ง ระยะเวลาสร้าง 1 อาทิตย์
+            </p>
+            <p>
+                🚨 <strong>ปัญหา:</strong> ระยะเวลาทำจริง 5 วัน / ไม่สามารถใส่ไอเดียทั้งหมดได้
                 <br>
-                Nothing can go wrong.... มี 2,181 เกมที่ลงแข่งขัน โดยมีระยะเวลาสร้าง 1 อาทิตย์
-                <br></br>
-                🚨🚨ปัญหาที่เจอระหว่างโปรเจค🚨🚨
+                🔧 <strong>แก้:</strong> จัดลำดับความสำคัญ โฟกัสที่ GamePlay / เสร็จก่อนกำหนดเพื่อใช้เวลาทดสอบ
+            </p>
+            <p>
+                🚨 <strong>ปัญหา:</strong> Tutorial ตัวหนังสือเยอะเกินไป ผู้เล่นไม่สุข
                 <br>
-                - ระยะเวลาทำจริง 5 วัน รวมทดสอบบัค เนื่องจากไม่ทำวัน เสาร์ อาทิตย์
-                <br>
-                - ไม่สามารถนำไอเดียทั้งหมดที่มี เอามาใช้ได้เนื่องจากระยะเวลาและความคืบหน้า
-                <br></br>
-                🔧🔧แก้ไข🔧🔧
-                <br>
-                - จัดลำดับความสำคัญและโฟกัสที่ GamePlay เพื่อให้เสร็จ
-                <br>
-                - ต้องเสร็จก่อนกำหนดเพราะต้องใช้เวลาทดสอบตัวเกม
-
-                <br></br>
-                🚨🚨ปัญหาที่เจอระหว่างโปรเจค🚨🚨
-                <br>
-                - เรื่อง UI และ ระบบTutorail ผู้เล่นไม่มีความสุขกับโหมดการสอนที่ตัวหนังสือที่เยอะเกินไป
-                <br></br>
-                🔧🔧แก้ไข🔧🔧
-                <br>
-                - ใช้ภาพแทนตัวหนังสือให้ได้มากที่สุด
-                <br>
-                - ใช้ประสบการณ์ของผู้เล่นสอนตัวเอง
+                🔧 <strong>แก้:</strong> ใช้ภาพแทนตัวหนังสือ / ให้ผู้เล่นเรียนรู้จากประสบการณ์
             </p>
         </div>
     </div>

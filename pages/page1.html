@@ -2,193 +2,175 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .page-container {
+
+        /* เพิ่ม CSS สำหรับส่วนติดต่อ */
+        .contact-links {
             display: flex;
-            align-items: flex-start;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: whitesmoke;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .contact-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            filter: invert(1);
+        }
+
+        .container {
+            display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* ให้เนื้อหาไม่ล้นจอมือถือ */
             max-width: 100%;
         }
 
+
         .image-container {
-            flex: 0 0 42%;
-            max-width: 300px;
+            width: 50%; /* ปรับขนาดให้เล็กลง */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             object-fit: contain;
-            border-radius: 8px;
         }
 
         .content {
-            flex: 1 1 200px;
+            width: 50%; /* ให้เนื้อหากว้างเท่ากับรูป */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
 
-        .contact-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: #eee;
-            font-size: 13px;
-            transition: transform 0.3s ease, color 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-2px);
-            color: #7cfc00;
-        }
-
-        .contact-item img {
-            width: 26px;
-            height: 26px;
-            object-fit: contain;
-            filter: invert(1);
-        }
 
         .tags {
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .tag {
             background-color: #b33b5e;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 10px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
         }
 
         h2 {
-            margin: 0 0 8px 0;
-            font-size: 20px;
-            color: #7cfc00;
-        }
-
-        h3 {
-            margin: 0 0 6px 0;
-            font-size: 14px;
-            color: #fff;
+            margin: 0;
+            font-size: 22px;
         }
 
         p {
-            font-size: 13px;
-            color: #ddd;
-            line-height: 1.7;
-            margin: 6px 0;
-        }
-
-        ul {
-            padding-left: 16px;
-            font-size: 12px;
-            color: #ccc;
-        }
-
-        ul li {
-            margin-bottom: 6px;
+            font-size: 14px;
+            color: #333;
             line-height: 1.6;
         }
 
-        @media (max-width: 600px) {
-            .page-container {
-                flex-direction: column;
-            }
-            .image-container {
-                flex: none;
-                width: 60%;
-                max-width: 180px;
-                margin: 0 auto;
-            }
-            .content {
-                width: 100%;
-            }
-            h2 {
-                font-size: 16px;
-            }
-            h3 {
-                font-size: 12px;
-            }
-            p, ul {
-                font-size: 11px;
-            }
-            .contact-item {
-                font-size: 11px;
-            }
-            .contact-item img {
-                width: 20px;
-                height: 20px;
-            }
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .image-container, .content {
-                width: 100%;
-                max-width: 100%;
-            }
-            .image-container img {
-                max-height: 200px;
-                object-fit: contain;
-            }
-            h2 { font-size: 18px; }
-            p, ul { font-size: 12px; }
-            .contact-item { font-size: 13px; }
-            .contact-item img { width: 22px; height: 22px; }
+        ul li {
+            font-weight: bold;
+        }
+
+        .download {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-    <div class="page-container">
+    <div class="container">
         <div class="image-container">
-            <img src="assets/img/itMe.png" alt="Lattaphon">
+            <img src="assets/img/itMe.png" alt="Game Image">
         </div>
         <div class="content">
-            <h2>About Me</h2>
-            <h3>Lattaphon (2001)</h3>
-            <p>
-                สวัสดีครับ ผมชื่อ เกมส์ ผมเป็นนักพัฒนาเกมที่มีความหลงใหลใน Game Mechanics &amp; System Design
-                สามารถใช้ Godot, Unity และ C# ได้ และมีประสบการณ์ทำเกมทั้งแบบ Singleplayer &amp; Multiplayer
-                รวมถึงการออกแบบ AI, UI และ Gameplay Loop
-            </p>
+            <h2 style="font-size: 36px;">AboutMe</h2>
+            <h2>Lattaphon (2001)</h2>
+            <div class="tags">
+                <p></p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                สวัสดีครับ ผมชื่อ เกมส์
+                ผมเป็นนักพัฒนาเกมที่มีความหลงใหลใน Game Mechanics & System Design สามารถใช้ Godot, Unity และ C# ได้และมีประสบการณ์ทำเกมทั้งแบบ Singleplayer & Multiplayer รวมถึงการออกแบบ AI, UI และ Gameplay Loop
+            </div>
             <ul>
                 <li>🔹 โปรแกรม: Godot, Unity, C#, GDScript</li>
                 <li>🎯 สนใจ: Roguelike, Puzzle Mechanics, AI Behavior, Shooter</li>
                 <li>🌱 กำลังเรียนรู้: Cybersecurity และ Web Development</li>
             </ul>
+            <br></br>
             <div class="contact-links">
+                <!-- GitHub -->
                 <a href="https://github.com/LKDevG?tab=repositories" target="_blank" class="contact-item">
                     <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
                     <span>GitHub</span>
                 </a>
+            
+                <!-- itch.io -->
                 <a href="https://lattaphon.itch.io/" target="_blank" class="contact-item">
                     <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch.io">
                     <span>itch.io</span>
                 </a>
+            
+                <!-- Email -->
                 <a href="mailto:lattaphon_k@outlook.co.th" class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
                     <span>Email</span>
                 </a>
+            
+                <!-- Phone -->
                 <a href="tel:+66632465051" class="contact-item">
                     <img src="https://cdn-icons-png.flaticon.com/512/126/126341.png" alt="Phone">
                     <span>063-2465051</span>
                 </a>
             </div>
+                    
         </div>
     </div>
 
 </body>
+
+<script>
+// ตัวอย่างการตั้งค่าเฉพาะหน้า
+function setupPageSettings() {
+    // เปลี่ยนเนื้อหาของ Modal สำหรับหน้านี้
+    const modalContent = `
+        <h3>Game Settings</h3>
+        <label>
+            <input type="checkbox" id="sound"> Sound Effects
+        </label>
+        <button onclick="saveSettings()">Save</button>
+    `;
+    
+    document.querySelector('.settings-modal').innerHTML = modalContent;
+}
+
+// เรียกใช้เมื่อโหลดหน้า
+window.onload = setupPageSettings;
+</script>
+
+
 </html>

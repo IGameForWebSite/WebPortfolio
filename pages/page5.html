@@ -2,144 +2,128 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .page-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            flex-wrap: wrap;
+        .container {
+            display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* ให้เนื้อหาไม่ล้นจอมือถือ */
             max-width: 100%;
         }
 
+
         .image-container {
-            flex: 0 0 44%;
-            max-width: 320px;
+            width: 50%; /* ปรับขนาดให้เล็กลง */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             object-fit: contain;
-            border-radius: 6px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .view-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #111;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-bottom: 10px;
-            transition: background 0.3s;
-        }
-
-        .view-btn:hover {
-            background-color: #333;
         }
 
         .content {
-            flex: 1 1 200px;
+            width: 50%; /* ให้เนื้อหากว้างเท่ากับรูป */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
+
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 10px;
         }
 
         .tagred {
             background-color: #b33b5e;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 5px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: bold;
+            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
+            max-width: 300px; /* สามารถปรับขนาดเองได้ */
+            text-align: center;
+        }
+
+        .tagblue {
+            background-color: #3b91b3;
+            color: white;
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
+            max-width: 300px; /* สามารถปรับขนาดเองได้ */
+            text-align: center;
         }
 
         h2 {
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            color: #7cfc00;
-            line-height: 1.5;
+            margin: 0;
+            font-size: 22px;
         }
 
         p {
-            font-size: 12px;
-            color: #ddd;
-            line-height: 1.8;
-            margin: 8px 0;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        @media (max-width: 600px) {
-            .page-container {
-                flex-direction: column;
-            }
-            .image-container {
-                flex: none;
-                width: 100%;
-                max-width: 100%;
-            }
-            .image-container img {
-                max-height: 180px;
-                object-fit: cover;
-            }
-            .content {
-                width: 100%;
-            }
-            h2 {
-                font-size: 13px;
-            }
-            p {
-                font-size: 11px;
-            }
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .image-container, .content {
-                width: 100%;
-                max-width: 100%;
-            }
-            .image-container img {
-                max-height: 180px;
-                object-fit: contain;
-            }
-            h2 { font-size: 16px; }
-            p, ul { font-size: 12px; }
-            .tagred, .tagblue { font-size: 13px; }
+        ul li {
+            font-weight: bold;
+        }
+
+        .download {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-    <div class="page-container">
+    <div class="container">
         <div class="image-container">
-            <a href="https://github.com/LKDevG/MemoryGame" target="_blank" class="view-btn">
-                View Project 🚀
+            <a href="https://github.com/LKDevG/MemoryGame" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: black; color: white; text-decoration: none; border-radius: 5px;">
+                View Project🚀
             </a>
-            <img src="assets/img/MemoryGame.png" alt="Memory Game">
-            <img src="assets/gif/MemnoryGif.gif" alt="Gameplay">
+            <img src="assets/img/MemoryGame.png" alt="Game Image">
+        <br></br>
+            <img src="assets/gif/MemnoryGif.gif" alt="Game Image">
         </div>
         <div class="content">
-            <h2>Memory Game (2024) #Unity</h2>
+            <h2>MemoryGame (2024) #Unity</h2>
             <div class="tags">
-                <div class="tagred">Game Developer</div>
+                <div class="tagred">Game Developers</div>
             </div>
             <p>
-                โปรเจคฝึกงาน สร้างพื้นฐานการสื่อสารระหว่าง Server กับ Player
-                ผมสร้าง Player 2 คนเพื่อให้คุยกันผ่าน FakeServer ที่รุ่นพี่สร้างขึ้น
-            </p>
-            <p>
-                🚨 <strong>ปัญหา:</strong> ส่งข้อมูล Player-to-Player / คำนวณฝั่ง Server / เงื่อนไขพิเศษแต่ละคน
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                เป็นโปรเจคฝึกงาน เพื่อสร้างพื้นฐานการสื่อสารระหว่าง Server To Player
                 <br>
-                🔧 <strong>แก้:</strong> ผู้เล่นมีสิทธิ์แค่ Request → Server ตัดสิน / เพิ่ม ID Player ใน Server / ผู้เล่นรับคำสั่ง Server ทุกครั้งที่จบเกม
+                ผมทำหน้าที่สร้าง Player 2 คนขึ้นมาเพื่อให้คุยกันโดยผ่านตัว FakeServer ที่รุ่นพี่ได้สร้างขึ้น
+                <br></br>
+                🚨🚨ปัญหาที่เจอระหว่างโปรเจค🚨🚨
+                <br>
+                - การส่งข้อมูลระหว่างผู้เล่นกับผู้เล่น
+                <br>
+                - การคำนวณฝั่งเซิฟเวอร์แล้วส่งค่ากลับไปหาผู้เล่นทั้งหมด
+                <br>
+                - การสร้างเงือนไขพิเศษ และ แตกต่างกัน เช่นผู้เล่นคนแรก +10 แต่คนที่สอง -10
+              <br></br>
+                🔧🔧แก้ไข🔧🔧
+                <br>
+                - ปรับเปลี่ยนความคิดว่าผู้เล่นมีสิทธิ์อะไร หรือ ไม่มีสิทธิ์อะไร เช่น ผู้เล่นมีสิทธิ์ส่งคำรองไปหา Server แล้วให้ Server ดูว่าผู้เล่นนั้นกระทำได้หรือไม่แล้วส่งค่ากลับไปหาผู้เล่นคนนั้น
+                <br>
+                - เพิ่มตัวเก็บ ID Player ของแต่ละคนไว้ฝั่ง Server แล้วทำตัวMethod ที่ไว้สำหรับส่งข้อมูลไปหาผู้เล่นทุกคนโดยฝั่งผู้เล่นสามารถ Request หรือขอฝั่งServer ได้อย่างเดียว
+                <br>
+                - ให้ฝั่งผู้เล่นรับคำสั่งSeverทุกครั้งที่มีการจบเกมและส่งคำขอตรวจสอบว่าตอนนี้ผู้เล่นคนไหนคะแนนเท่าไรเพื่อนำมาแสดงผลของตัวเอง
             </p>
         </div>
     </div>

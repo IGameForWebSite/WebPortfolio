@@ -2,180 +2,161 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .page-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            flex-wrap: wrap;
+        .container {
+            display: flex; /* ⭐ เพิ่ม flex เพื่อให้เรียงแนวนอน ⭐ */
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* ให้เนื้อหาไม่ล้นจอมือถือ */
             max-width: 100%;
         }
 
+
         .image-container {
-            flex: 0 0 44%;
-            max-width: 320px;
+            width: 50%; /* ปรับขนาดให้เล็กลง */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
 
         .image-container img {
             width: 100%;
             height: auto;
             object-fit: contain;
-            border-radius: 6px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .view-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #171a21;
-            color: #c7d5e0;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-bottom: 10px;
-            border: 1px solid #2a475e;
-            transition: background 0.3s;
-        }
-
-        .view-btn:hover {
-            background-color: #2a475e;
         }
 
         .content {
-            flex: 1 1 200px;
+            width: 50%; /* ให้เนื้อหากว้างเท่ากับรูป */
+            max-width: 500px; /* กำหนดขนาดสูงสุด */
         }
+
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 10px;
         }
 
         .tagred {
             background-color: #b33b5e;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 5px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: bold;
+            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
+            max-width: 300px; /* สามารถปรับขนาดเองได้ */
+            text-align: center;
         }
 
         .tagblue {
             background-color: #3b91b3;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 5px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: bold;
+            display: inline-block; /* ป้องกันไม่ให้ขยายเต็มบรรทัด */
+            max-width: 300px; /* สามารถปรับขนาดเองได้ */
+            text-align: center;
         }
 
         .taggray {
             background-color: #7f8c8d;
             color: white;
-            padding: 4px 8px;
+            padding: 5px 5px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: bold;
+            display: inline-block;
+            max-width: 300px;
+            text-align: center;
         }
 
         .tagsteam {
-            background-color: #171a21;
-            color: #c7d5e0;
-            padding: 4px 8px;
+            background-color: #171a21;  /* Steam Dark Blue */
+            color: #c7d5e0;  /* Steam Text Color */
+            padding: 5px 10px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 20px;
             font-weight: bold;
-            border: 1px solid #2a475e;
+            display: inline-block;
+            max-width: 300px;
+            text-align: center;
+            border: 1px solid #2a475e;  /* Steam Border */
         }
 
         h2 {
-            margin: 0 0 10px 0;
-            font-size: 16px;
-            color: #7cfc00;
-            line-height: 1.5;
+            margin: 0;
+            font-size: 22px;
         }
 
         p {
-            font-size: 12px;
-            color: #ddd;
-            line-height: 1.8;
-            margin: 8px 0;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        @media (max-width: 600px) {
-            .page-container {
-                flex-direction: column;
-            }
-            .image-container {
-                flex: none;
-                width: 100%;
-                max-width: 100%;
-            }
-            .image-container img {
-                max-height: 180px;
-                object-fit: cover;
-            }
-            .content {
-                width: 100%;
-            }
-            h2 {
-                font-size: 13px;
-            }
-            p {
-                font-size: 11px;
-            }
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .image-container, .content {
-                width: 100%;
-                max-width: 100%;
-            }
-            .image-container img {
-                max-height: 180px;
-                object-fit: contain;
-            }
-            h2 { font-size: 16px; }
-            p, ul { font-size: 12px; }
-            .tagred, .tagblue, .taggray, .tagsteam { font-size: 13px; }
+        ul li {
+            font-weight: bold;
+        }
+
+        .download {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-    <div class="page-container">
+    <div class="container">
         <div class="image-container">
-            <a href="https://store.steampowered.com/app/3678900/Grimchans_Soul_Fight/" target="_blank" class="view-btn">
-                View on Steam 🚀
+            <a href="https://store.steampowered.com/app/3678900/Grimchans_Soul_Fight/" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: black; color: white; text-decoration: none; border-radius: 5px;">
+                View 🚀
             </a>
-            <img src="assets/img/GameSteam1.png" alt="Grim-chan's Soul Fight">
-            <img src="assets/gif/GIF_GameSteam.gif" alt="Gameplay">
+            <img src="assets/img/GameSteam1.png" alt="Game Image">
+        <br></br>
+            <img src="assets/gif/GIF_GameSteam.gif" alt="Game Image">
         </div>
         <div class="content">
             <h2>Grim-chan's Soul Fight (2025) #Godot</h2>
             <div class="tags">
                 <div class="tagsteam">STEAM</div>
-                <div class="tagred">Game Developer</div>
-                <div class="taggray">Controller &amp; Mouse</div>
+                <div class="tagred">Game Developers</div>
+                <div class="taggray">Controller & Mouse</div>
             </div>
             <p>
-                โปรเจคเกม 2D ที่เอาลงขายบน Steam เกมแรก ได้รับแรงบัลดาลใจจาก Agar.io
-                แนวคิดคือการร่วมกลุ่มเพื่อแข็งแกร่งขึ้น ผมทำหน้าที่เป็น Game Developer เป็นหลัก
-            </p>
-            <p>
-                🚨 <strong>ปัญหา:</strong> ผู้เล่นไม่สามารถเก็บได้เกิน 150 ตัวเพราะเกมหนักเกินไป
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                โปรเจคเกม 2D ที่เอาลงขายบน Steam เกมแรกโดยได้รับแรงบรรดาลใจมากจากเกม Agar.io ที่มีแนวคิดคือ การร่วมกลุ่มเพื่อแข็งแกร่งขึ้น
                 <br>
-                🔧 <strong>แก้:</strong> แบ่งเป็นกลุ่มทีละ 10 ตัว / ยิ่งไกลยิ่งอัพเดทน้อยลง / จำกัดการแสดงผลที่ 150 ตัว
-            </p>
-            <p>
-                🚨 <strong>ปัญหา:</strong> FPS กระตุกจากการเกิดและเอฟเฟคระเบิด
+                โดยผมทำหน้าที่เป็น Game Developers เป็นหลัก
+                <br></br>
+                🚨🚨ปัญหาที่เจอระหว่างโปรเจค🚨🚨
                 <br>
-                🔧 <strong>แก้:</strong> ใช้ Object Pooling / เปลี่ยนจาก Spawn ทีเดียวเป็น Spawn ทีละน้อย
+                - ผู้เล่นไม่สามารถเก็บได้เกิน 150 ตัวเพราะจะทำให้เกมหนักเกินไป
+                <br></br>
+                🔧🔧แก้ไข🔧🔧
+                <br>
+                - อัพเดทโดยแบ่งเป็นกลุ่ม ทีละ 10 ตัว
+                <br>
+                - ยิ่งไกลยิ่งอัพเดทเฟรมที่น้อยลง เช่น นอกจอไม่ให้อัพเดท ใกล้สุดอัพเดททุก 3 เฟรม
+                <br>
+                - จำกัดการแสดงผลและเอฟเฟคต่างๆ เช่น จำกัดที่ 150 ตัว มากกว่านี้ให้เก็บเป็นข้อมูลแล้วดึงมาใช้
+                <br></br>
+                🚨🚨ปัญหาที่เจอระหว่างโปรเจค🚨🚨
+                <br>
+                - FPS กระฉากจากการเกิดและเอฟเฟคระเบิด
+                <br></br>
+                🔧🔧แก้ไข🔧🔧
+                <br>
+                - ใช้ object pooling สร้างและนำกลับมาใช้ใหม่แทนการทำลาย
+                <br>
+                - เปลี่ยนจาก Spawn ทีเดียวเป็น ค่อยๆ Spawn
             </p>
         </div>
     </div>
